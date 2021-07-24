@@ -90,7 +90,7 @@ student_id uuid,
 topic_id uuid,
 test_cleared boolean,
 percentage_mark bigint,
-test_date DATE,
+test_date DATE
 );
 
 INSERT INTO student_topic (student_id, topic_id, test_cleared, percentage_mark, test_date) VALUES
