@@ -28,14 +28,14 @@ JOIN student_student s
 ON d.date = s.class_start_date
 WHERE year = 2021
 GROUP BY quarter
-ORDER BY student_count DESC
+ORDER BY student_count DESC;
 
 -- Question 4
 SELECT grade, COUNT(DISTINCT topic_id)
 FROM student_student s
 JOIN student_topic t
 ON s.student_id = t.student_id
-GROUP BY grade
+GROUP BY grade;
 
 
 -- Question 5
@@ -56,4 +56,32 @@ JOIN student_topic t
 ON s.student_id = t.student_id
 WHERE test_cleared=True
 GROUP BY grade) b
-ON a.grade = b.grade
+ON a.grade = b.grade;
+
+
+-- Question 6
+
+SELECT topic_name, AVG(percentage_mark), PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY percentage_mark) AS median,
+PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY percentage_mark) AS "25th_percentile",
+PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY percentage_mark) AS "75th_percentile"
+FROM student_topic s
+JOIN topic_topic t
+ON t.topic_id = s.topic_id
+GROUP BY t.topic_name;
+
+
+
+-- Question 7
+
+Nothing much
+
+
+
+
+
+
+
+
+
+
+
