@@ -83,3 +83,26 @@ INSERT INTO student_student (student_id, teacher_id, city_id, student_name, grad
 ('e3bf4592-45ab-4071-b700-366feaa5e0e0','e3bf4592-45ab-4071-b700-366feaa5e0e0','e3bf4592-45ab-4071-b700-366feaa5e0e0','QR','C','2021-10-25'),
 ('1902512a-6fec-4518-b32a-0709294b2dd2','1902512a-6fec-4518-b32a-0709294b2dd2','1902512a-6fec-4518-b32a-0709294b2dd2','ST','A','2021-12-25'),
 ('c1a06000-9033-414e-85c7-195dee73c0dc','c1a06000-9033-414e-85c7-195dee73c0dc','1902512a-6fec-4518-b32a-0709294b2dd2','UV','D','2021-12-25');
+
+CREATE TABLE IF NOT EXISTS student_topic
+(
+student_id uuid,
+topic_id uuid,
+test_cleared boolean,
+percentage_mark bigint,
+test_date DATE,
+PRIMARY KEY(student_id, teacher_id)
+);
+
+INSERT INTO student_topic (student_id, topic_id, test_cleared, percentage_mark, test_date) VALUES
+('5ef11fdf-1efd-40ca-b196-257952481350','5ef11fdf-1efd-40ca-b196-257952481350','True', 80,'2021-01-25'),
+('136dcd5e-a216-42f1-92ed-0ecaa894ac01','136dcd5e-a216-42f1-92ed-0ecaa894ac01','True', 80,'2021-03-25'),
+('1488c6e2-8dde-458f-9879-d6571fac2167','1488c6e2-8dde-458f-9879-d6571fac2167','True', 80,'2021-04-25'),
+('b30e656d-8da8-4373-bb3f-58de0e1fadb8','b30e656d-8da8-4373-bb3f-58de0e1fadb8','True', 80,'2021-06-25'),
+('a1ac28ff-3c1e-4d75-b136-93ad87bf07ee','a1ac28ff-3c1e-4d75-b136-93ad87bf07ee','True', 80,'2021-07-25'),
+('8251bc91-a775-4e46-98de-b092fc938bb0','8251bc91-a775-4e46-98de-b092fc938bb0','True', 80,'2021-09-25'),
+('1db57905-bf60-44a2-bbf5-7ff374384cda','1db57905-bf60-44a2-bbf5-7ff374384cda','True', 80,'2021-10-25'),
+('8b79787b-61cb-45fa-a195-b156277a33e3','8b79787b-61cb-45fa-a195-b156277a33e3','True', 80,'2021-01-25'),
+('e3bf4592-45ab-4071-b700-366feaa5e0e0','e3bf4592-45ab-4071-b700-366feaa5e0e0','True', 80,'2021-10-25'),
+('1902512a-6fec-4518-b32a-0709294b2dd2','1902512a-6fec-4518-b32a-0709294b2dd2','True', 80,'2021-12-25'),
+('c1a06000-9033-414e-85c7-195dee73c0dc','c1a06000-9033-414e-85c7-195dee73c0dc','True', 80,'2021-12-25');
