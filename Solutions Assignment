@@ -29,3 +29,10 @@ ON d.date = s.class_start_date
 WHERE year = 2021
 GROUP BY quarter
 ORDER BY student_count DESC
+
+-- Question 4
+SELECT grade, COUNT(DISTINCT topic_id)
+FROM student_student s
+JOIN student_topic t
+ON s.student_id = t.student_id
+GROUP BY grade
