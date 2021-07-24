@@ -1,0 +1,31 @@
+-- Question 1
+SELECT city, state, count
+FROM
+(SELECT c.city, c.state, count(student_id) as count
+FROM student_student s
+JOIN city_region c
+ON s.city_id = c.city_id
+GROUP BY c.city_id, c.state) combine
+ORDER BY count DESC
+LIMIT 5;
+
+-- Question 2
+SELECT grade, count(DISTINCT student_id) as student_count, ROUND((count(DISTINCT student_id)*100.0/(SELECT count(DISTINCT student_id) FROM student_student)),2) AS percent_students
+FROM student_student
+GROUP BY grade;
+
+-- Question 3
+
+SELECT quarter, count(DISTINCT student_id) AS student_count,
+ROUND(count(DISTINCT student_id)*100.0/
+(SELECT count(DISTINCT student_id) AS total
+FROM date_date d
+JOIN student_student s
+ON d.date = s.class_start_date
+WHERE year = 2021),2) AS percent_students
+FROM date_date d
+JOIN student_student s
+ON d.date = s.class_start_date
+WHERE year = 2021
+GROUP BY quarter
+ORDER BY student_count DESC
