@@ -91,7 +91,6 @@ topic_id uuid,
 test_cleared boolean,
 percentage_mark bigint,
 test_date DATE,
-PRIMARY KEY(student_id, teacher_id)
 );
 
 INSERT INTO student_topic (student_id, topic_id, test_cleared, percentage_mark, test_date) VALUES
