@@ -1,0 +1,85 @@
+CREATE TABLE IF NOT EXISTS date_date
+(
+  date DATE NOT NULL,
+  year INT NOT NULL,
+  Quarter varchar(20) NOT NULL,
+  Month varchar(20) NOT NULL,
+  PRIMARY KEY(DATE)
+  );
+  
+INSERT INTO date_date(date , year, Quarter, Month)
+VALUES 
+('2021-01-25',2021,'Q1','January'),
+('2021-03-25',2021,'Q1','March'),
+('2021-04-25',2021,'Q2','April'),
+('2021-06-25',2021,'Q2','June'),
+('2021-07-25',2021,'Q3','July'),
+('2021-09-25',2021,'Q3','September'),
+('2021-10-25',2021,'Q4','October'),
+('2021-12-25',2021,'Q4','December');
+
+CREATE TABLE IF NOT EXISTS city_region
+(
+city_id uuid,
+city varchar(20) NOT NULL,
+state varchar(20) NOT NULL,
+PRIMARY KEY(city_id)
+);
+
+INSERT INTO city_region (city_id, city, state) VALUES
+('5ef11fdf-1efd-40ca-b196-257952481350', 'Chennai','Tamil Nadu'),
+('136dcd5e-a216-42f1-92ed-0ecaa894ac01', 'Madurai','Tamil Nadu'),
+('1488c6e2-8dde-458f-9879-d6571fac2167', 'Bangalore', 'Karnataka'),
+('b30e656d-8da8-4373-bb3f-58de0e1fadb8', 'Mangalore','Karnataka'),
+('a1ac28ff-3c1e-4d75-b136-93ad87bf07ee', 'Mysore','Karnataka'),
+('8251bc91-a775-4e46-98de-b092fc938bb0', 'Kannur','Kerala'),
+('1db57905-bf60-44a2-bbf5-7ff374384cda', 'Trichy','Tamil Nadu'),
+('8b79787b-61cb-45fa-a195-b156277a33e3', 'Kottayam','Kerala'),
+('e3bf4592-45ab-4071-b700-366feaa5e0e0', 'Trivandrum','Kerala'),
+('1902512a-6fec-4518-b32a-0709294b2dd2', 'Kochi','Kerala'),
+('c1a06000-9033-414e-85c7-195dee73c0dc', 'Kollam','Kerala');
+
+CREATE TABLE IF NOT EXISTS topic_topic
+(
+topic_id uuid,
+topic_name varchar(20) NOT NULL,
+grade varchar(20) NOT NULL,
+PRIMARY KEY(topic_id)
+);
+
+INSERT INTO topic_topic (topic_id, topic_name, grade) VALUES
+('5ef11fdf-1efd-40ca-b196-257952481350', 'Math','A'),
+('136dcd5e-a216-42f1-92ed-0ecaa894ac01', 'English','B'),
+('1488c6e2-8dde-458f-9879-d6571fac2167', 'Physics', 'C'),
+('b30e656d-8da8-4373-bb3f-58de0e1fadb8', 'Math','D'),
+('a1ac28ff-3c1e-4d75-b136-93ad87bf07ee', 'Chem','E'),
+('8251bc91-a775-4e46-98de-b092fc938bb0', 'Bio','F'),
+('1db57905-bf60-44a2-bbf5-7ff374384cda', 'Math','A'),
+('8b79787b-61cb-45fa-a195-b156277a33e3', 'CS','B'),
+('e3bf4592-45ab-4071-b700-366feaa5e0e0', 'CS','C'),
+('1902512a-6fec-4518-b32a-0709294b2dd2', 'Bio','A'),
+('c1a06000-9033-414e-85c7-195dee73c0dc', 'Math','D');
+
+CREATE TABLE IF NOT EXISTS student_student
+(
+student_id uuid,
+teacher_id uuid,
+city_id uuid,
+student_name varchar(20) NOT NULL,
+grade varchar(20) NOT NULL,
+class_start_date DATE NOT NULL,
+PRIMARY KEY(student_id, teacher_id, city_id)
+);
+
+INSERT INTO student_student (student_id, teacher_id, city_id, student_name, grade, class_start_date) VALUES
+('5ef11fdf-1efd-40ca-b196-257952481350','5ef11fdf-1efd-40ca-b196-257952481350','5ef11fdf-1efd-40ca-b196-257952481350','AB','A','2021-01-25'),
+('136dcd5e-a216-42f1-92ed-0ecaa894ac01','136dcd5e-a216-42f1-92ed-0ecaa894ac01','5ef11fdf-1efd-40ca-b196-257952481350','CD','B','2021-03-25'),
+('1488c6e2-8dde-458f-9879-d6571fac2167','1488c6e2-8dde-458f-9879-d6571fac2167','1488c6e2-8dde-458f-9879-d6571fac2167','EF','C','2021-04-25'),
+('b30e656d-8da8-4373-bb3f-58de0e1fadb8','b30e656d-8da8-4373-bb3f-58de0e1fadb8','1488c6e2-8dde-458f-9879-d6571fac2167','GH','D','2021-06-25'),
+('a1ac28ff-3c1e-4d75-b136-93ad87bf07ee','a1ac28ff-3c1e-4d75-b136-93ad87bf07ee','a1ac28ff-3c1e-4d75-b136-93ad87bf07ee','IJ','E','2021-07-25'),
+('8251bc91-a775-4e46-98de-b092fc938bb0','8251bc91-a775-4e46-98de-b092fc938bb0','8251bc91-a775-4e46-98de-b092fc938bb0','KL','F','2021-09-25'),
+('1db57905-bf60-44a2-bbf5-7ff374384cda','1db57905-bf60-44a2-bbf5-7ff374384cda','1db57905-bf60-44a2-bbf5-7ff374384cda','MN','A','2021-10-25'),
+('8b79787b-61cb-45fa-a195-b156277a33e3','8b79787b-61cb-45fa-a195-b156277a33e3','8251bc91-a775-4e46-98de-b092fc938bb0','OP','B','2021-01-25'),
+('e3bf4592-45ab-4071-b700-366feaa5e0e0','e3bf4592-45ab-4071-b700-366feaa5e0e0','e3bf4592-45ab-4071-b700-366feaa5e0e0','QR','C','2021-10-25'),
+('1902512a-6fec-4518-b32a-0709294b2dd2','1902512a-6fec-4518-b32a-0709294b2dd2','1902512a-6fec-4518-b32a-0709294b2dd2','ST','A','2021-12-25'),
+('c1a06000-9033-414e-85c7-195dee73c0dc','c1a06000-9033-414e-85c7-195dee73c0dc','1902512a-6fec-4518-b32a-0709294b2dd2','UV','D','2021-12-25');
