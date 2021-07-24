@@ -36,3 +36,24 @@ FROM student_student s
 JOIN student_topic t
 ON s.student_id = t.student_id
 GROUP BY grade
+
+
+-- Question 5
+
+SELECT a.grade, topic_count, student_pass_count
+FROM
+(SELECT grade,
+COUNT(DISTINCT topic_id) as topic_count
+FROM student_student s
+JOIN student_topic t
+ON s.student_id = t.student_id
+GROUP BY grade) a 
+LEFT JOIN
+(SELECT grade,
+COUNT(DISTINCT t.student_id) AS student_pass_count
+FROM student_student s
+JOIN student_topic t
+ON s.student_id = t.student_id
+WHERE test_cleared=True
+GROUP BY grade) b
+ON a.grade = b.grade
